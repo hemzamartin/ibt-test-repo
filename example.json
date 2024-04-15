@@ -1,1 +1,143 @@
-New file
+{
+    "type": "playbook",
+    "spec_version": "cacao-2.0",
+    "id": "playbook--61a6c41e-6efc-4516-a242-dfbc5c89d562",
+    "name": "Find Malware FuzzyPanda",
+    "description": "This playbook will look for FuzzyPanda on the network and in a SIEM",
+    "playbook_types": [
+        "investigation"
+    ],
+    "playbook_activities": [
+        "analyze-collected-data",
+        "identify-indicators"
+    ],
+    "playbook_processing_summary": {
+        "data_markings": true
+    },
+    "created_by": "identity--5abe695c-7bd5-4c31-8824-2528696cdbf1",
+    "created": "2023-02-19T08:00:24.918Z",
+    "modified": "2023-02-19T08:00:24.918Z",
+    "valid_from": "2023-02-19T08:00:24.918Z",
+    "valid_until": "2023-12-31T23:59:59.999Z",
+    "derived_from": [
+        "playbook--00ee41a2-c2ca-41da-8ea9-681344eb3926"
+    ],
+    "priority": 3,
+    "severity": 70,
+    "impact": 5,
+    "industry_sectors": [
+        "aerospace",
+        "defense"
+    ],
+    "labels": [
+        "malware",
+        "fuzzypanda",
+        "apt"
+    ],
+    "external_references": [
+        {
+            "name": "ACME Security FuzzyPanda Report",
+            "description": "ACME security review of FuzzyPanda 2021",
+            "source": "ACME Security Company, Solutions for FuzzyPanda 2021, January 2021. Available online: http://www.example.com/info/fuzzypanda2021.html",
+            "url": "http://www.example.com/info/fuzzypanda2021.html",
+            "external_id": "fuzzypanda 2023.01",
+            "reference_id": "malware--2008c526-508f-4ad4-a565-b84a4949b2af"
+        }
+    ],
+    "markings": [
+        "marking-statement--6424867b-0440-4885-bd0b-604d51786d06",
+        "marking-tlp--bab4a63c-aed9-4cf5-a766-dfca5abac2bb"
+    ],
+    "playbook_variables": {
+        "__data_exfil_site__": {
+            "type": "ipv4-addr",
+            "description": "The IP address for the data exfiltration site",
+            "value": "1.2.3.4"
+        }
+    },
+    "workflow_start": "start--07bea005-4a36-4a77-bd1f-79a6e4682a13",
+    "workflow_exception": "  ",
+    "workflow": {
+        "action--fc7bda8b-c2d8-4533-b022-19a68e150e44": {
+            "type": "action",
+            "name": "Ask the user to choose the next step via cli command",
+            "commands": [
+                {
+                    "type": "bash",
+                    "command": "/opt/bin/ask_cli_question(\"Enter next step choice (1, 2, other) ?\", \"__userseln__\")"
+                }
+            ],
+            "on_completion": "switch-condition--33ba061e-193d-41db-b40b-0e8373997dc9",
+            "out_args": [
+                "__userseln__"
+            ]
+        },
+        "switch-condition--33ba061e-193d-41db-b40b-0e8373997dc9": {
+            "type": "switch-condition",
+            "delay": "5000",
+            "timeout": "60000",
+            "on_completion": "action--c6728da5-f96a-4ba8-a4eb-fda6f24c9d7f",
+            "switch": "__userseln__:value",
+            "cases": {
+                "1": "action--fc7bda8b-c2d8-4533-b022-19a68e150e5b",
+                "2": "action--c4f77ed2-b82d-4285-ae04-541366b1cfc8",
+                "default": "action--cf5f14bd-c84f-4016-89ce-f1539a34c76d"
+            }
+        },
+        "action--fc7bda8b-c2d8-4533-b022-19a68e150e5b": {
+            "type": "action",
+            "name": "Action to handle Switch Option 1",
+            "on_completion": "action--c6728da5-f96a-4ba8-a4eb-fda6f24c9d7f"
+        },
+        "action--c4f77ed2-b82d-4285-ae04-541366b1cfc8": {
+            "type": "action",
+            "name": "Action to handle Switch Option 2",
+            "on_completion": "action--c6728da5-f96a-4ba8-a4eb-fda6f24c9d7f"
+        },
+        "action--cf5f14bd-c84f-4016-89ce-f1539a34c76d": {
+            "type": "action",
+            "name": "Action to handle Switch Option Default",
+            "on_completion": "action--c6728da5-f96a-4ba8-a4eb-fda6f24c9d7f"
+        },
+        "end--c6728da5-f96a-4ba8-a4eb-fda6f24c9d7f": {
+            "type": "end",
+            "name": "Next step upon completion of the switch statement"
+        }
+    },
+    "playbook_extensions": {},
+    "authentication_info_definitions": {},
+    "agent_definitions": {
+        "http-api--7e9174ec-a293-43df-a72d-471c79e276bf": {
+            "type": "http-api",
+            "name": "Server 1",
+            "address": {
+                "dname": [
+                    "server1.example.com"
+                ]
+            },
+            "authentication_info": "http-basic--c2557066-1ffe-440e-b474-fea8158ab202",
+            "category": [
+                "server"
+            ]
+        }
+    },
+    "target_definitions": {},
+    "extension_definitions": {},
+    "data_marking_definitions": {
+        "marking-statement--6424867b-0440-4885-bd0b-604d51786d06": {
+            "type": "marking-statement",
+            "id": "marking-statement--6424867b-0440-4885-bd0b-604d51786d06",
+            "created_by": "identity--5abe695c-7bd5-4c31-8824-2528696cdbf1",
+            "created": "2023-02-19T08:00:24.918Z",
+            "statement": "Copyright 2023 ACME Security Company"
+        },
+        "marking-tlp--bab4a63c-aed9-4cf5-a766-dfca5abac2bb": {
+            "type": "marking-tlp",
+            "id": "marking-tlp--bab4a63c-aed9-4cf5-a766-dfca5abac2bb",
+            "created_by": "identity--5abe695c-7bd5-4c31-8824-2528696cdbf1",
+            "created": "2022-10-01T00:00:00.000Z",
+            "tlpv2_level": "TLP:GREEN"
+        }
+    },
+    "signatures": []
+}
