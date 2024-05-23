@@ -1,70 +1,55 @@
 {
-  "agent_definitions": {
-    "bea15d50-405f-4728-8161-c781896ddb80": {
-      "key": "individual--75baba7d-a198-4c5c-805c-af616b4f7a31",
-      "value": {
-        "description": "The admin who responds to an alert by configuring a switch.",
-        "name": "Network Admin",
-        "type": "individual"
-      }
-    }
-  },
-  "created": "2023-02-19T01:09:00.000Z",
-  "created_by": "identity--351b1469-64b4-4778-8d93-f7949a88990d",
-  "description": "This playbook addresses a malicious MAC address, illustrating an action step, command, and agent/target.",
-  "id": "playbook--fe85f68d-1960-4596-96a2-228113e143cf",
-  "modified": "2023-02-19T01:09:00.000Z",
-  "name": "Bad MAC Address test",
-  "playbook_processing_summary": {},
-  "spec_version": "cacao-2.0",
-  "target_definitions": {
-    "d5e0383e-c8ab-42a4-89e9-cde4d7c135dc": {
-      "key": "security-category--3c1daf98-7e22-4e0c-bb8c-6bd78159ca5d",
-      "value": {
-        "category": [
-          "switch"
-        ],
-        "name": "Switch",
-        "type": "security-category"
-      }
-    }
-  },
   "type": "playbook",
+  "spec_version": "cacao-2.0",
+  "id": "playbook--fe85f68d-1960-4596-96a2-228113e143cf",
+  "name": "Bad MAC Address",
+  "description": "This playbook addresses a malicious MAC address, illustrating an action step, command, and agent/target.",
+  "playbook_processing_summary": {},
+  "created_by": "identity--351b1469-64b4-4778-8d93-f7949a88990d",
+  "created": "2023-02-19T01:09:00.000Z",
+  "modified": "2023-02-19T01:09:00.000Z",
+  "workflow_start": "start--fa16a4e9-e6b9-4658-b464-ca1632ff57f4",
   "workflow": {
-    "110f7fca-b768-448e-a08c-4243c979177e": {
-      "key": "action--6398eb05-3eb8-43f5-87d3-f24e07492a41",
-      "value": {
-        "agent": "individual--75baba7d-a198-4c5c-805c-af616b4f7a31",
-        "commands": [
-          {
-            "command": "Switch(conf)#mac address-table static 3467.0933.341c vlan X drop",
-            "type": "ssh"
-          }
-        ],
-        "description": "This command blocks a MAC address on a switch.",
-        "name": "Block MAC address",
-        "on_completion": "end--116cdac5-63f1-4d8f-b3a8-e5667936e9b6",
-        "targets": [
-          "security-category--3c1daf98-7e22-4e0c-bb8c-6bd78159ca5d"
-        ],
-        "type": "action"
-      }
+    "start--fa16a4e9-e6b9-4658-b464-ca1632ff57f4": {
+      "type": "start",
+      "description": "Start example playbook.",
+      "on_completion": "action--6398eb05-3eb8-43f5-87d3-f24e07492a41"
     },
-    "b4e087bc-5ec2-4d85-b491-7a9f6180ebc8": {
-      "key": "end--116cdac5-63f1-4d8f-b3a8-e5667936e9b6",
-      "value": {
-        "description": "End of example playbook.",
-        "type": "end"
-      }
+    "action--6398eb05-3eb8-43f5-87d3-f24e07492a41": {
+      "type": "action",
+      "name": "Block MAC address",
+      "description": "This command blocks a MAC address on a switch.",
+      "commands": [
+        {
+          "type": "ssh",
+          "command": "Switch(conf)#mac address-table static 3467.0933.341c vlan X drop"
+        }
+      ],
+      "agent": "individual--75baba7d-a198-4c5c-805c-af616b4f7a31",
+      "targets": [
+        "security-category--3c1daf98-7e22-4e0c-bb8c-6bd78159ca5d"
+      ],
+      "on_completion": "end--116cdac5-63f1-4d8f-b3a8-e5667936e9b6"
     },
-    "cce7a363-0188-4eb7-88fb-761ee69b4421": {
-      "key": "start--fa16a4e9-e6b9-4658-b464-ca1632ff57f4",
-      "value": {
-        "description": "Start example playbook.",
-        "on_completion": "action--6398eb05-3eb8-43f5-87d3-f24e07492a41",
-        "type": "start"
-      }
+    "end--116cdac5-63f1-4d8f-b3a8-e5667936e9b6": {
+      "type": "end",
+      "description": "End of example playbook."
     }
   },
-  "workflow_start": "start--fa16a4e9-e6b9-4658-b464-ca1632ff57f4"
+  "agent_definitions": {
+    "individual--75baba7d-a198-4c5c-805c-af616b4f7a31": {
+      "type": "individual",
+      "name": "Network Admin",
+      "description": "The admin who responds to an alert by configuring a switch."
+    }
+  },
+  "target_definitions": {
+    "security-category--3c1daf98-7e22-4e0c-bb8c-6bd78159ca5d": {
+      "type": "security-category",
+      "name": "Switch",
+      "category": [
+        "switch"
+      ]
+    }
+  }
 }
