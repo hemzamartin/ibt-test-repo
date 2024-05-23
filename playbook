@@ -1,6 +1,6 @@
 {
   "agent_definitions": {
-    "a74ef58b-34b9-4f79-9caf-c49a7011b893": {
+    "bea15d50-405f-4728-8161-c781896ddb80": {
       "key": "individual--75baba7d-a198-4c5c-805c-af616b4f7a31",
       "value": {
         "description": "The admin who responds to an alert by configuring a switch.",
@@ -14,11 +14,11 @@
   "description": "This playbook addresses a malicious MAC address, illustrating an action step, command, and agent/target.",
   "id": "playbook--fe85f68d-1960-4596-96a2-228113e143cf",
   "modified": "2023-02-19T01:09:00.000Z",
-  "name": "Bad MAC Address",
+  "name": "Bad MAC Address test",
   "playbook_processing_summary": {},
   "spec_version": "cacao-2.0",
   "target_definitions": {
-    "4f73dc7c-7312-4125-8e45-0135904690c2": {
+    "d5e0383e-c8ab-42a4-89e9-cde4d7c135dc": {
       "key": "security-category--3c1daf98-7e22-4e0c-bb8c-6bd78159ca5d",
       "value": {
         "category": [
@@ -31,7 +31,7 @@
   },
   "type": "playbook",
   "workflow": {
-    "0ba3104d-7121-4a98-812c-a88dc394ae97": {
+    "110f7fca-b768-448e-a08c-4243c979177e": {
       "key": "action--6398eb05-3eb8-43f5-87d3-f24e07492a41",
       "value": {
         "agent": "individual--75baba7d-a198-4c5c-805c-af616b4f7a31",
@@ -50,14 +50,14 @@
         "type": "action"
       }
     },
-    "fa86ce38-063b-4bc8-87b5-0e02d9dcb6a6": {
+    "b4e087bc-5ec2-4d85-b491-7a9f6180ebc8": {
       "key": "end--116cdac5-63f1-4d8f-b3a8-e5667936e9b6",
       "value": {
         "description": "End of example playbook.",
         "type": "end"
       }
     },
-    "830f3c9a-db7b-4aec-9175-86e7b38d2ee2": {
+    "cce7a363-0188-4eb7-88fb-761ee69b4421": {
       "key": "start--fa16a4e9-e6b9-4658-b464-ca1632ff57f4",
       "value": {
         "description": "Start example playbook.",
