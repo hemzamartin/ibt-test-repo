@@ -11,7 +11,7 @@
   "description": "This playbook addresses a malicious MAC address, illustrating an action step, command, and agent/target.",
   "id": "playbook--fe85f68d-1960-4596-96a2-228113e143cf",
   "modified": "2023-02-19T01:09:00.000Z",
-  "name": "Bad MAC Address",
+  "name": "Bad MAC Address test",
   "playbook_processing_summary": {},
   "spec_version": "cacao-2.0",
   "target_definitions": {
@@ -41,23 +41,6 @@
         "security-category--3c1daf98-7e22-4e0c-bb8c-6bd78159ca5d"
       ]
     },
-    "end--116cdac5-63f1-4d8f-b3a8-e5667936e9b6": {
-      "type": "end",
-      "description": "End of example playbook."
-    },
-    "start--fa16a4e9-e6b9-4658-b464-ca1632ff57f4": {
-      "type": "start",
-      "description": "Start example playbook.",
-      "on_completion": "action--6398eb05-3eb8-43f5-87d3-f24e07492a41"
-    },
-    "parallel--fccfe3ed-02d1-4fa5-8c44-b8d732418233": {
-      "type": "parallel",
-      "on_completion": "end--116cdac5-63f1-4d8f-b3a8-e5667936e9b6",
-      "next_steps": [
-        "action--9f6baaeb-7966-424a-94ff-073b88c70251",
-        "action--afb636d2-d95f-49c0-bf9e-5830dbfc0cea"
-      ]
-    },
     "action--9f6baaeb-7966-424a-94ff-073b88c70251": {
       "type": "action",
       "on_completion": "end--3f56a798-2063-4d22-a33e-5bfa4f772701"
@@ -66,12 +49,30 @@
       "type": "action",
       "on_completion": "end--1bbdf206-0d2d-4ce9-a796-0d5753592fdf"
     },
-    "end--3f56a798-2063-4d22-a33e-5bfa4f772701": {
-      "type": "end"
+    "end--116cdac5-63f1-4d8f-b3a8-e5667936e9b6": {
+      "type": "end",
+      "description": "End of example playbook."
     },
     "end--1bbdf206-0d2d-4ce9-a796-0d5753592fdf": {
       "type": "end"
+    },
+    "end--3f56a798-2063-4d22-a33e-5bfa4f772701": {
+      "type": "end"
+    },
+    "parallel--fccfe3ed-02d1-4fa5-8c44-b8d732418233": {
+      "type": "parallel",
+      "next_steps": [
+        "action--9f6baaeb-7966-424a-94ff-073b88c70251",
+        "action--afb636d2-d95f-49c0-bf9e-5830dbfc0cea"
+      ],
+      "on_completion": "end--116cdac5-63f1-4d8f-b3a8-e5667936e9b6"
+    },
+    "start--fa16a4e9-e6b9-4658-b464-ca1632ff57f4": {
+      "type": "start",
+      "description": "Start example playbook.",
+      "on_completion": "action--6398eb05-3eb8-43f5-87d3-f24e07492a41"
     }
   },
-  "workflow_start": "start--fa16a4e9-e6b9-4658-b464-ca1632ff57f4"
+  "workflow_start": "start--fa16a4e9-e6b9-4658-b464-ca1632ff57f4",
+  "playbook_extensions": {}
 }
